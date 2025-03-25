@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:17
+    container_name: singlang_db
+    environment:
+      POSTGRES_DB: signlang_db
+      POSTGRES_USER: signlang_user
+      POSTGRES_PASSWORD: strongpassword123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - myproject_network
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "signlang_user", "-d", "signlang_db"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  web:
+    build:
+      context: .
+    container_name: singlang_web
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - myproject_network
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: signlang_db
+      DATABSE_USER: signlang_user
+      DATABASE_PASSWORD: strongpassword123
+
+volumes:
+  postgres_data:
+
+networks:
+  myproject_network:
