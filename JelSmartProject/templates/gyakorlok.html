@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Gyakorlók</h1>
+
+<div class="row">
+    {% for gyakorlo in gyakorlok %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ gyakorlo.cim }}</h5>
+                <p class="card-text">{{ gyakorlo.leiras }}</p>
+                <span class="badge bg-secondary">{{ gyakorlo.nehezseg }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
