@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Munkahelyi Jelnyelvi Résztudás{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Munkahelyi Jelnyelvi Résztudás</h2>
+    
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Dolgozók jelnyelvi résztudása</h5>
+                    <p class="card-text">Jelnyelvi kifejezések alkalmazása a munkahelyen, kommunikáció siket és nagyothalló kollégákkal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Gyakori helyzetek -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5>Gyakori Munkahelyi Helyzetek</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ügyfélszolgálati kommunikáció
+                            <span class="badge bg-primary rounded-pill">15 kifejezés</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Csapatmegbeszélések
+                            <span class="badge bg-primary rounded-pill">22 kifejezés</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Munkavédelmi utasítások
+                            <span class="badge bg-primary rounded-pill">8 kifejezés</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Szakmai kifejezések
+                            <span class="badge bg-primary rounded-pill">30+ kifejezés</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gyakorló anyagok -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5>Gyakorló Anyagok</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6>Interaktív gyakorlatok</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Videós példák</h6>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Kvizzek</h6>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-success mt-2">Gyakorlás indítása</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Jelnyelvi tippek -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5>Hasznos Tippek a Munkahelyi Kommunikációhoz</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6>Lassan és világosan</h6>
+                                    <p>Használj egyértelmű kézmozdulatokat, és adj időt a másik félnek a megértésre.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6>Arc kifejezés</h6>
+                                    <p>Az arckifejezés a jelnyelv szerves része - használd kifejezően!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6>Ismétlés</h6>
+                                    <p>Ne habozz ismételni, ha úgy érzed, nem értették meg elsőre.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

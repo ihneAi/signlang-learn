@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Kézikönyvek{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Jelnyelvi Kézikönyvek</h2>
+
+<div class="row">
+    {% for kezikonyv in kezikonyvek %}
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ kezikonyv.cim }}</h5>
+                <p class="card-text">{{ kezikonyv.leiras }}</p>
+                <a href="#" class="btn btn-outline-primary">Részletek</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
