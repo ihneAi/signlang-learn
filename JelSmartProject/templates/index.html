@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Kezdőlap{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center py-5 bg-light rounded">
+    <h1 class="display-4">Üdvözöl a JelSmart!</h1>
+    <p class="lead">A legjobb hely a jelnyelv tanulásához és gyakorlásához</p>
+    
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Kézikönyvek</h5>
+                    <p class="card-text">Alkalmazási útmutatók és tananyagok a jelnyelvhez.</p>
+                    <a href="{% url 'jelapp:kezikonyvek' %}" class="btn btn-primary">Tovább</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Gyakorlók</h5>
+                    <p class="card-text">Nagy halomban tartozó jelnyelvi gyakorlók.</p>
+                    <a href="{% url 'jelapp:gyakorlok' %}" class="btn btn-primary">Tovább</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Fogalmak</h5>
+                    <p class="card-text">Alapvető jelnyelvi fogalmak és definíciók.</p>
+                    <a href="{% url 'jelapp:fogalmak' %}" class="btn btn-primary">Tovább</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

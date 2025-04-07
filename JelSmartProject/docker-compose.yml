@@ -37,7 +37,7 @@ services:
       DATABASE_HOST: db
       DATABASE_PORT: 5432
       DATABASE_NAME: signlang_db
-      DATABSE_USER: signlang_user
+      DATABASE_USER: signlang_user  # Javított változó neve
       DATABASE_PASSWORD: strongpassword123
 
 volumes:

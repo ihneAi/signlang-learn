@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Jelnyelvi Fogalmak{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Jelnyelvi Fogalmak</h2>
+    
+    <div class="row">
+        <!-- Keresés doboz -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Keresés a fogalmak között</h5>
+                    <form method="get" class="d-flex">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Keresés..." aria-label="Search" value="{{ request.GET.q }}">
+                        <button class="btn btn-outline-success" type="submit">Keres</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kategóriák -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kategóriák</h5>
+                    <div class="btn-group-vertical w-100">
+                        <a href="?kategoria=összes" class="btn btn-outline-secondary text-start {% if not request.GET.kategoria or request.GET.kategoria == 'összes' %}active{% endif %}">Összes kategória</a>
+                        {% for kategoria in kategoriak %}
+                        <a href="?kategoria={{ kategoria }}" class="btn btn-outline-secondary text-start {% if request.GET.kategoria == kategoria %}active{% endif %}">{{ kategoria }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fogalmak listája -->
+    <div class="row">
+        {% for fogalom in fogalmak %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ fogalom.nev }}</h5>
+                    <p class="card-text">{{ fogalom.definicio }}</p>
+                    <span class="badge bg-info text-dark">{{ fogalom.kategoria }}</span>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="{% url 'jelapp:fogalom_reszletek' fogalom.id %}" class="btn btn-sm btn-outline-primary">Részletek</a>
+                    <button class="btn btn-sm btn-outline-success ms-2">Kedvencnek jelöl</button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">Jelenleg nincsenek elérhető fogalmak.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
