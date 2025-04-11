@@ -1,36 +1,31 @@
 from django.db import models
 
-class Kezikonyv(models.Model):
-    cim = models.CharField(max_length=200)
-    leiras = models.TextField()
-    kategoria = models.CharField(max_length=100)
-    letrehozva = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.cim
-
-class Gyakorlo(models.Model):
-    cim = models.CharField(max_length=200, verbose_name="Cím")
-    leiras = models.TextField(verbose_name="Leírás")
-    nehezseg = models.CharField(max_length=50, verbose_name="Nehézség")
-    letrehozas_datum = models.DateTimeField(auto_now_add=True, verbose_name="Létrehozás dátuma")
+class BaseModel(models.Model):
+    description = models.TextField(null=True, blank=True)
 
     class Meta:
-        verbose_name = "Gyakorló"
-        verbose_name_plural = "Gyakorlók"
+        abstract = True
 
     def __str__(self):
-        return self.cim
+        return f"{self.__class__.__name__} description: {self.description}"
 
-class Fogalom(models.Model):
-    nev = models.CharField(max_length=100, verbose_name="Név")
-    definicio = models.TextField(verbose_name="Definíció")
-    kategoria = models.CharField(max_length=50, verbose_name="Kategória")
-    letrehozas_datum = models.DateTimeField(auto_now_add=True, verbose_name="Létrehozás dátuma")
 
-    class Meta:
-        verbose_name = "Fogalom"
-        verbose_name_plural = "Fogalmak"
+class Lesson(BaseModel):
+    id = models.AutoField(primary_key=True)
+    title = models.TextField()
 
     def __str__(self):
-        return self.nev
+        return f"Lesson title: {self.title}, {super().__str__()}"
+
+
+class Topic(BaseModel):
+    topic_id = models.AutoField(primary_key=True)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    name = models.TextField()
+    picture = models.TextField()
+
+    def __str__(self):
+        return (
+            f"Topic id: {self.topic_id}, Lesson id: {self.lesson.id}, "
+            f"name: {self.name}, {super().__str__()}, picture url: {self.picture}"
+        )
