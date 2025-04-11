@@ -1,20 +1,15 @@
 from django.contrib import admin
-from .models import Kezikonyv, Gyakorlo, Fogalom
+from .models import Lesson, Topic
 
-@admin.register(Kezikonyv)
-class KezikonyvAdmin(admin.ModelAdmin):
-    list_display = ('cim', 'kategoria', 'letrehozva')
-    search_fields = ('cim', 'leiras')
-    list_filter = ('kategoria',)
+@admin.register(Lesson)
+class LessonAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'description')
+    search_fields = ('title', 'description')
+    ordering = ('id',)
 
-@admin.register(Gyakorlo)
-class GyakorloAdmin(admin.ModelAdmin):
-    list_display = ('cim', 'nehezseg', 'letrehozas_datum')
-    list_filter = ('nehezseg',)
-    search_fields = ('cim', 'leiras')
-    ordering = ('-letrehozas_datum',)
-
-@admin.register(Fogalom)
-class FogalomAdmin(admin.ModelAdmin):
-    list_display = ('nev', 'kategoria', 'letrehozas_datum')
-    search_fields = ('nev', 'definicio')
+@admin.register(Topic)
+class TopicAdmin(admin.ModelAdmin):
+    list_display = ('topic_id', 'name', 'lesson', 'picture', 'description')
+    search_fields = ('name', 'description')
+    list_filter = ('lesson',)
+    ordering = ('topic_id',)
